@@ -1,0 +1,32 @@
+// File Name: prime_factor.cpp
+// Author: Wan Siu On
+// Title: Assignment4 for COMP1117
+// Description: Luhn algorithm
+// Last Changed: November 10, 2016
+
+//Function to determine whether the number is prime number or not
+bool isNotPrime (int N){
+    for (int i = 2; i < N; i++)
+		if (N % i == 0)                             //if the number is divisible by any of the integers in between 1 and N
+			return true;                            //then it isnot a prime number
+	return false;
+}
+
+#include <iostream>
+using namespace std;
+
+int main () {
+    int N;                                          //declare variables of the number as integer
+    cin >> N ;                                      //input the number
+    while (isNotPrime(N)){                          //loop if the variable N is not prime number
+        for (int i = 2; i < N; i ++) {
+            if (N % i == 0) {                       //if i is a factor of N
+                N = N/i;                            // Divide the number N by i
+                cout << i << "*" ;                  // ourput the factor i
+                break;
+            }
+        }
+    }
+    cout << N << endl;                              //output the prime number left after division
+    return 0;
+}
